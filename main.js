@@ -1,28 +1,3 @@
-// let precio=4;
-
-// if (precio==24){
-//     alert("El precio es igual a 24");
-// } else if (precio<24){
-//     alert("El precio " + precio + " es menor a 24");
-// }
-
-
-// let numero=prompt("numero al azar");
-
-// if(numero>1000){
-//     alert("Numero es mayor a 1000");
-// } else if(numero<1000){
-//     alert("Numero menor a 1000");
-// }
-
-
-// Ciclos e iteraciones   
-
-
-// for (let i=5; i>0; i--) {
-//     let ingresarNombre = prompt("Ingrese su Nombre: ");
-//     alert("Turno N.-" +i+ " Nombre: " +ingresarNombre);
-// }
 
 let producto = ``;
 let cantidadTotal = 0;
@@ -67,6 +42,6 @@ do {
     *Aceptar, para seguir comprando
     *Cancelar, para finalizar la compra`)
 
-}while (seguirComprando = confirm);
+}while (seguirComprando = !confirm);
 
-alert(`El valor de la compra es: ` + `$` + precioTotal);
+alert(`El valor de la compra es: ` + `$` + precioTotal)
