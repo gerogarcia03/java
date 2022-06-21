@@ -23,7 +23,6 @@ function compra(){
         producto = prompt(`Hola ${nombre}
         ¿Qué desea comprar?
         Por favor, ingrese el número del producto.
-
         1- Coca 500 $100
         2- Pepitos $150
         3- Coca Cola Sin Azucar 2.25 $330
