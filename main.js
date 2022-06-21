@@ -3,29 +3,18 @@ let producto = ``;
 let cantidadTotal = 0;
 let cantidad = 0;
 let precio = 0;
-let precioTotal = 0;
+let precioTotal = precio*cantidad;
 let nombre = "";
 let seguirComprando = false;
 
 function welcome (){
 
-    alert(`¡Bienvenido a Kioskiri! EL kiosco`);
+    alert(`¡Bienvenido a Kioskiri! EL KIOSCO`);
     nombre=prompt((`Por favor ingrese su nombre`));
 
     do{
         compra()
-    }while (seguirComprando!=confirm)
-}
-
-
-function finalizarCompra(){
-    alert(`Ha finalizado su compra con exito
-    El precio de su compra es de $`+ precioTotal);
-}
-
-function continuarCompra(){
-    if(seguirComprando=confirm){
-    return compra()};
+    }while (seguirComprando)
 }
 
 function compra(){
@@ -42,7 +31,7 @@ function compra(){
         cantidad = Number(prompt(nombre + `¿Cuántos ` + producto + `s desea llevar?`));
     
         switch(producto){
-            case `Coca`:
+            case `Coca 500`:
                 precio = 100;
                 break;
             case `Pepitos`:
@@ -52,8 +41,8 @@ function compra(){
                 precio = 330;
                 break;
             case `Pepsi Black`:
-            precio = 200;
-            break;
+                precio = 200;
+                break;
             case `Duquesa`:
                 precio = 90;
                 break;    
@@ -61,11 +50,29 @@ function compra(){
                 alert(`Algunos de los datos ingresados no son correctos`);
                 precio = 0;
                 cantidad = 0;
-                finalizarCompra();
-            
-        }precioTotal += precio * cantidad;
-    
+                break;
+        }
 }
 
 welcome();
 compra();
+
+if (cantidad >= 1 ){
+    continuarCompra () ;
+}
+
+function finalizarCompra () {
+    alert(`Su compra ha finalizado con exito!
+           Usted ha comprado ` +producto + ` y el total es $` + precioTotal);
+}
+
+function continuarCompra(){
+    let seguirComprando = confirm (`¿Quiere seguir comprando?`);
+
+    if ( seguirComprando ){
+        alert( `Presione "Aceptar" para seguir comprando` );
+        compra();
+    }else{
+        finalizarCompra();
+    }
+}
