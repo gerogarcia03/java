@@ -1,7 +1,7 @@
-
-let producto = ``;
+let producto = 0;
+let productoName = ``;
 let cantidadTotal = 0;
-let cantidad = "";
+let cantidad = 0;
 let precio = 0;
 let nombre = "";
 let precioTotal= 0;
@@ -22,80 +22,88 @@ welcome();
 function compra(){
         producto = prompt(`Hola ${nombre}
         ¿Qué desea comprar?
-        
-        *Coca 500lt
-        *Pepitos
-        *Coca Cola Sin Azucar 2.25lt
-        *Pepsi Black 1.5lt
-        *Duquesa
+        Por favor, ingrese el número del producto.
+
+        1- Coca 500 $100
+        2- Pepitos $150
+        3- Coca Cola Sin Azucar 2.25 $330
+        4- Pepsi Black 1.5lt $200
+        5- Duquesa $90
         `);
+
+        switch(producto){
+            case `1`:
+                precio = 100;
+                productoName = `Coca 500`
+                break;
+            case `2`:
+                precio = 150;
+                productoName = `Pepitos`
+                break;
+            case `3`:
+                precio = 330;
+                productoName = `Coca Cola Sin Azucar 2.25`
+                break;
+            case `3`:
+                precio = 200;
+                productoName = `Pepsi Black 1.5`
+                break;
+            case `4`:
+                precio = 90;
+                productoName = `Duquesa`
+                break;
+            default:
+                nombre=null;
+                alert(`Su nombre no ha sido registrado, por favor, vuelva a ingresar`)
+                welcome();
+                precio=0;
+                producto=0;
+                alert(`Algunos de los datos ingresados es erroneo. Por favor, 
+                vuelva a realizar la compra`)
+                compra();
+        }
         Cantidad();
 }
 
 function Cantidad(){
     
-        cantidad = Number(prompt(nombre + `¿Cuántos ` + producto + `s desea llevar?`));
+        cantidad = Number(prompt(nombre + `¿Cuántos ` + productoName + `s desea llevar? 
+        Ingrese en numeros, cuantos `+ productoName+ `s desea llevar`));
     
-        switch(producto){
-            case `Coca 500`:
-                precio = 100;
-                break;
-            case `Pepitos`:
-                precio = 150;
-                break;
-            case `Coca Cola Sin Azucar`:
-                precio = 330;
-                break;
-            case `Pepsi Black`:
-                precio = 200;
-                break;
-            case `Duquesa`:
-                precio = 90;
-                break;    
-            default:
-                alert(`Algunos de los datos ingresados no son correctos`);
-                precio = 0;
-                cantidad = 0;
-                producto= "";
-                break;
-        }
 
         // let canastaProductos =+ ` | ` + producto;
         // let canstaCantidades =+ ` | ` + cantidad;
         let precioTotal =+ precio*cantidad;
 
-        if (cantidad>=1){
-            continuarCompra();
-        } else {
+        if (cantidad=1){
             finalizarCompra();
         }
 }
 
-function continuarCompra(){
+// function continuarCompra(){
 
-    alert(`Acaba de comprar ` + producto);
+//     alert(`Acaba de comprar ` + cantidad + ` ` + productoName);
 
-    let seguirComprando = confirm (`¿Desea seguir comprando?`);
+//     let seguirComprando = !confirm (`¿Desea seguir comprando?`)
 
-    if ( seguirComprando ){
-        compra();
-
-    //     p = split (' | ', canastaProductos);
-    //     c = split (' | ', cantidadProductos);
-
-    // for(i = 0; i <= count (p); i++){
-    //     mensaje += `- ` + c[i] + ` x ` + p[i] + `\n`
-    // };
-
-    } else (seguirComprando =! confirm);{
-        finalizarCompra();
-    }                                                                                                               
-}
+//     if ( seguirComprando ){
+//         finalizarCompra();                                                                             
+//     }
+// }
 
 function finalizarCompra() {
 
-    alert(`Su compra ha finalizado con exito! Usted ha comprado` + `\n\n` + mensaje + `\n\n`+ `y el total es $ ` + precioTotal);
-    alert(`¡Gracias por comprar en Kioskiri!`);
+    alert(`Su compra ha finalizado con exito! Usted ha comprado` + `\n\n` + mensaje + 
+    `\n\n`+ `y el total es $ ` + precioTotal);
+
+    let finalizar = confirm (`¿Desea finalizar la compra?`);
+
+    if ( finalizar ){
+
+    alert(`¡Su compra ha finalizado con exito! 
+    ¡Gracias por comprar en Kioskiri!`);
+
+    }
 }
 
 
