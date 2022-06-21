@@ -1,10 +1,10 @@
 
 let producto = ``;
 let cantidadTotal = 0;
-let cantidad = ``;
+let cantidad = "";
 let precio = 0;
-let precioTotal = 0;
 let nombre = "";
+let precioTotal= 0;
 let seguirComprando = false;
 
 function welcome (){
@@ -14,8 +14,10 @@ function welcome (){
 
     do{
         compra()
-    }while (seguirComprando)
+    }while (seguirComprando);
 }
+
+welcome();
 
 function compra(){
         producto = prompt(`Hola ${nombre}
@@ -56,35 +58,44 @@ function Cantidad(){
                 cantidad = 0;
                 producto= "";
                 break;
-        }precioTotal = precio*cantidad
+        }
+
+        // let canastaProductos =+ ` | ` + producto;
+        // let canstaCantidades =+ ` | ` + cantidad;
+        let precioTotal =+ precio*cantidad;
 
         if (cantidad>=1){
             continuarCompra();
+        } else {
+            finalizarCompra();
         }
 }
 
-welcome();
-compra();
-
 function continuarCompra(){
 
-    alert(`Acaba de comprar ` + producto)
+    alert(`Acaba de comprar ` + producto);
 
     let seguirComprando = confirm (`¿Desea seguir comprando?`);
 
-    if ( seguirComprando){
+    if ( seguirComprando ){
+        compra();
 
-        alert( `Presione "Aceptar" para seguir comprando` );
-        return compra();
+    //     p = split (' | ', canastaProductos);
+    //     c = split (' | ', cantidadProductos);
 
-    }else;{
+    // for(i = 0; i <= count (p); i++){
+    //     mensaje += `- ` + c[i] + ` x ` + p[i] + `\n`
+    // };
+
+    } else (seguirComprando =! confirm);{
         finalizarCompra();
-    }
+    }                                                                                                               
+}
+
+function finalizarCompra() {
+
+    alert(`Su compra ha finalizado con exito! Usted ha comprado` + `\n\n` + mensaje + `\n\n`+ `y el total es $ ` + precioTotal);
+    alert(`¡Gracias por comprar en Kioskiri!`);
 }
 
 
-function finalizarCompra () {
-    alert(`Su compra ha finalizado con exito!
-           Usted ha comprado ` +producto + ` y el total es $ ` + precioTotal);
-            alert(`¡Gracias por comprar en Kioskiri!`)
-}
