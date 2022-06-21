@@ -78,8 +78,7 @@ function finalizarCompra() {
 
     alert(`Su compra ha finalizado con exito! Usted ha comprado ` + cantidad + ` ` + productoName + ` y el total es $` + precioTotal);
 
-    alert(`¡Su compra ha finalizado con exito! 
-    ¡Gracias por comprar en Kioskiri!`);
+    alert(`¡Su compra ha finalizado con exito! ¡Gracias por comprar en Kioskiri!`);
 }
 
 if (cantidad>=1){
