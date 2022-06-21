@@ -3,7 +3,7 @@ let producto = ``;
 let cantidadTotal = 0;
 let cantidad = 0;
 let precio = 0;
-let precioTotal = precio*cantidad;
+let precioTotal = 0;
 let nombre = "";
 let seguirComprando = false;
 
@@ -27,6 +27,10 @@ function compra(){
         *Pepsi Black 1.5lt
         *Duquesa
         `);
+        Cantidad();
+}
+
+function Cantidad(){
     
         cantidad = Number(prompt(nombre + `¿Cuántos ` + producto + `s desea llevar?`));
     
@@ -50,29 +54,36 @@ function compra(){
                 alert(`Algunos de los datos ingresados no son correctos`);
                 precio = 0;
                 cantidad = 0;
-                break;
-        }
+                producto= "";
+                return;
+        }precioTotal = precio*cantidad
 }
 
 welcome();
 compra();
 
-if (cantidad >= 1 ){
-    continuarCompra () ;
+if (cantidad>=1){
+    finalizarCompra();
 }
+
+function continuarCompra(){
+
+    alert(`Acaba de comprar ` + producto)
+
+    let seguirComprando = confirm (`¿Desea seguir comprando?`);
+
+    if ( seguirComprando = confirm ){
+
+        alert( `Presione "Aceptar" para seguir comprando` );
+        return compra();
+
+    }else ( seguirComprando!=confirm );{
+        finalizarCompra();
+    }
+}
+
 
 function finalizarCompra () {
     alert(`Su compra ha finalizado con exito!
            Usted ha comprado ` +producto + ` y el total es $` + precioTotal);
-}
-
-function continuarCompra(){
-    let seguirComprando = confirm (`¿Quiere seguir comprando?`);
-
-    if ( seguirComprando ){
-        alert( `Presione "Aceptar" para seguir comprando` );
-        compra();
-    }else{
-        finalizarCompra();
-    }
 }
