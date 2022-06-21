@@ -1,7 +1,7 @@
 
 let producto = ``;
 let cantidadTotal = 0;
-let cantidad = 0;
+let cantidad = ``;
 let precio = 0;
 let precioTotal = 0;
 let nombre = "";
@@ -55,16 +55,16 @@ function Cantidad(){
                 precio = 0;
                 cantidad = 0;
                 producto= "";
-                return;
+                break;
         }precioTotal = precio*cantidad
+
+        if (cantidad>=1){
+            continuarCompra();
+        }
 }
 
 welcome();
 compra();
-
-if (cantidad>=1){
-    finalizarCompra();
-}
 
 function continuarCompra(){
 
@@ -72,12 +72,12 @@ function continuarCompra(){
 
     let seguirComprando = confirm (`¿Desea seguir comprando?`);
 
-    if ( seguirComprando = confirm ){
+    if ( seguirComprando){
 
         alert( `Presione "Aceptar" para seguir comprando` );
         return compra();
 
-    }else ( seguirComprando!=confirm );{
+    }else;{
         finalizarCompra();
     }
 }
@@ -85,5 +85,6 @@ function continuarCompra(){
 
 function finalizarCompra () {
     alert(`Su compra ha finalizado con exito!
-           Usted ha comprado ` +producto + ` y el total es $` + precioTotal);
+           Usted ha comprado ` +producto + ` y el total es $ ` + precioTotal + ` 
+           Gracias por comprar en Kioskiri`);
 }
