@@ -85,6 +85,6 @@ function continuarCompra(){
 
 function finalizarCompra () {
     alert(`Su compra ha finalizado con exito!
-           Usted ha comprado ` +producto + ` y el total es $ ` + precioTotal + ` 
-           Gracias por comprar en Kioskiri`);
+           Usted ha comprado ` +producto + ` y el total es $ ` + precioTotal);
+            alert(`¡Gracias por comprar en Kioskiri!`)
 }
