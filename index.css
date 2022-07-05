@@ -1,0 +1,84 @@
+*{
+    margin: 0;
+    padding: 0;
+
+}
+
+/*-------header--------*/
+
+header{
+    background-color: antiquewhite;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.modalN .btn {
+    margin-right: 2rem;
+}
+
+h1{
+    text-align: center;
+    margin: 2rem 0rem;
+}
+
+h2{
+    margin: 1rem;
+    text-align: center;
+}
+
+
+/*-------------productos-----------*/
+
+ul{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: aliceblue;
+    margin-top: 3rem;
+}
+
+ul li{
+    list-style: none;
+    padding: 0.5rem;
+    background-color: white;
+    border-radius: 0.3rem;
+    border: 0.1rem solid grey;
+
+    margin: 3rem;
+}
+
+ul li p{
+    margin: 0.5rem;
+}
+
+ul li .boton{
+    width: 5rem;
+    background-color: transparent;
+    border: 0.1rem solid blue;
+    border-radius: 0.2rem;
+}
+
+ul li .fotos{
+    width: 10rem;
+    height: 10rem;
+}
+
+
+
+/*-----------carrito-----------*/
+
+.productosEnCarrito{
+    display: flex;
+    align-items: center;
+    justify-content: space-around; 
+}
+
+.modal-content{
+    width: 40rem;
+}
+
+
+.modal-content p {
+    margin: 1rem;
+}

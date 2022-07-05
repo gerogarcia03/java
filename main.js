@@ -1,101 +1,85 @@
+const stockProductos = [
+    {id: 1, name: `Coca Cola 500`, price: 150, cantidad: 1, img: `../images/coca500.png`},
+    {id: 2, name: `Lays Jamon`, price: 100, cantidad: 1, img: `../images/laysjamon.png`},
+    {id: 3, name: `Paso de Los Toros`, price: 250, cantidad: 1, img :`../images/pasodlt500.png`},
+    {id: 4, name: `Sonrisas`, price: 110, cantidad: 1, img: `../images/pepsi1lt.png`},
+    {id: 5, name: `Surtido Bagley`, price: 90, cantidad: 1, img: `../images/sonrisas.png`},
+];
 
-let producto = ``;
-let cantidadTotal = 0;
-let cantidad = "";
-let precio = 0;
-let nombre = "";
-let precioTotal= 0;
-let seguirComprando = false;
+const productos = document.getElementById  (`productos`);
 
-function welcome (){
+let carrito = []
 
-    alert(`¡Bienvenido a Kioskiri! EL KIOSCO`);
-    nombre=prompt((`Por favor ingrese su nombre`));
+const carritoCont = document.getElementById (`carritoContenedor`);
 
-    do{
-        compra()
-    }while (seguirComprando);
-}
 
-welcome();
+//----------------------------------------------------------------------
 
-function compra(){
-        producto = prompt(`Hola ${nombre}
-        ¿Qué desea comprar?
-        
-        *Coca 500lt
-        *Pepitos
-        *Coca Cola Sin Azucar 2.25lt
-        *Pepsi Black 1.5lt
-        *Duquesa
-        `);
-        Cantidad();
-}
+stockProductos.forEach ((producto) => {
+    const li = document.createElement(`li`);
+    li.classList.add (`producto`);
+    li.innerHTML = `
+    <img class= "fotos" src=${producto.img}>
+    <p> ${producto.name} </p>
+    <p>Precio: $ ${producto.price} </p>
+    <button id="agregar${producto.id}" class="boton">AGREGAR</button> 
+    `
+    productos.appendChild(li);
 
-function Cantidad(){
+    const button = document.getElementById (`agregar${producto.id}`)
+
+    button.addEventListener(`click`, () => {
+        addToCart(producto.id)
+    } )
+
+
+});
+
+function addToCart (prodId) {
+    const prod = stockProductos.find ((prod) => prod.id ===prodId)
+    carrito.push(prod);
+    actualizarCart();
+    console.log(carrito);
     
-        cantidad = Number(prompt(nombre + `¿Cuántos ` + producto + `s desea llevar?`));
-    
-        switch(producto){
-            case `Coca 500`:
-                precio = 100;
-                break;
-            case `Pepitos`:
-                precio = 150;
-                break;
-            case `Coca Cola Sin Azucar`:
-                precio = 330;
-                break;
-            case `Pepsi Black`:
-                precio = 200;
-                break;
-            case `Duquesa`:
-                precio = 90;
-                break;    
-            default:
-                alert(`Algunos de los datos ingresados no son correctos`);
-                precio = 0;
-                cantidad = 0;
-                producto= "";
-                break;
-        }
-
-        // let canastaProductos =+ ` | ` + producto;
-        // let canstaCantidades =+ ` | ` + cantidad;
-        let precioTotal =+ precio*cantidad;
-
-        if (cantidad>=1){
-            continuarCompra();
-        } else {
-            finalizarCompra();
-        }
 }
 
-function continuarCompra(){
+const precioTotal = document.getElementById (`precio`)
 
-    alert(`Acaba de comprar ` + producto);
+function actualizarCart () {
 
-    let seguirComprando = confirm (`¿Desea seguir comprando?`);
+    carritoCont.innerHTML = "";
 
-    if ( seguirComprando ){
-        compra();
+    carrito.forEach ((prod) => {
+        const div = document.createElement (`div`)
+        div.className = (`productosEnCarrito`)
+        div.innerHTML = `
+        <p>${prod.name}</p>
+        <p>Precio: $${prod.price}</p>
+        <p>Cantidad: ${prod.cantidad}</p>
+        <button onclick="eliminarCarrito(${prod.id})" class="deleteButton"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash-fill" viewBox="0 0 16 16">
+        <path d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z"/>
+        </svg>
+        </button>
+        `
+        carritoCont.appendChild(div)
+    })
 
-    //     p = split (' | ', canastaProductos);
-    //     c = split (' | ', cantidadProductos);
+    precioTotal.innerText = carrito.reduce((acc, prod) => acc + prod.price, 0)
 
-    // for(i = 0; i <= count (p); i++){
-    //     mensaje += `- ` + c[i] + ` x ` + p[i] + `\n`
-    // };
-
-    } else (seguirComprando =! confirm);{
-        finalizarCompra();
-    }                                                                                                               
 }
 
-function finalizarCompra() {
+function eliminarCarrito (prodId) {
+    const prod = carrito.find((prod) => prod.id === prodId);
+    const indice = carrito.indexOf(prod);
+    carrito.splice(indice, 1);
 
-    alert(`Su compra ha finalizado con exito! Usted ha comprado` + `\n\n` + mensaje + `\n\n`+ `y el total es $ ` + precioTotal);
-    alert(`¡Gracias por comprar en Kioskiri!`);
+    actualizarCart();
 }
+
+
+
+
+
+
 
 
